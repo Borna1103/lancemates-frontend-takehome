@@ -1,8 +1,7 @@
 # Lancemates — Frontend Take-Home Assignment
 
 **Landing Page + Login + Sign-Up**
-
-Thanks for applying! This assignment mirrors the kind of work you'll do on the **Lancemates** product — a local gig marketplace where people post tasks, find help, and offer services in their community. We've scaffolded a simple skeleton (three screens, no backend) so you focus on the design and polish. Roughly **4–6 hours** of work. Do your best, we're looking for clean, thoughtful code over completeness.
+This assignment mirrors the kind of work you'll do on the **Lancemates** product — a local gig marketplace where people post tasks, find help, and offer services in their community. Roughly **4–6 hours** of work. Do your best, we're looking for clean, thoughtful code and design over completeness.
 
 ---
 
@@ -10,7 +9,7 @@ Thanks for applying! This assignment mirrors the kind of work you'll do on the *
 
 1. Install dependencies: `npm install`
 2. Run it: `npm run web` (that's all you need — no Android/iOS SDK setup required)
-3. Verify the app boots: you should see the landing page skeleton with Log In / Get Started buttons
+3. Verify the app boots: you should see a blank page with LandingScreen text.
 
 **Environment:** Node 18+ and npm are the only tools you need.
 
@@ -29,7 +28,7 @@ We've started the project so you have a place to begin. These are **empty stubs*
 
 - **One week** from today.
 - Open a **Pull Request** against this repo, **or** if we gave you this as a zip, push it to a public repo and send us the link (include a `NOTES.md` describing your choices).
-- In your submission, briefly answer: what you built, one thing you're proud of, and one thing you'd do differently.
+
 
 ---
 
@@ -41,14 +40,13 @@ Three screens in this single Expo (React Native, TypeScript) app:
 
 The public-facing page for a local gig marketplace called **Lancemates**.
 
-- **Responsive nav bar** — logo/brand name on the left, "Log In" and "Get Started" buttons on the right. On narrow screens, collapse buttons to something sensible.
+- **Responsive nav bar** — logo/brand name on the left, Login and SignUp buttons on the right.
 - **Hero section** — a headline ("Find help or lend a hand" style), a short subtitle, and two call-to-action buttons ("Get Started Free" + "Log In"). Add a row of trust stats (e.g., active users, tasks posted, satisfaction rate). Subtle entrance animations are a nice-to-have, not required.
-- **Features section** — a grid of 6 feature cards (icon + title + short blurb). Ideas: Find Local Gigs, Post Tasks Instantly, Real-Time Chat, Secure Payments, Quick Matching, Community Driven — or make up your own.
 - **"How it works" section** — 3 steps (e.g., Create an Account → Post or Browse → Connect & Complete).
 - **Final call-to-action** — a highlighted box with "Ready to get started?" + a signup button.
 - **Footer** — brand, copyright, and a few dummy links.
 
-**Design freedom:** you own the visual design. We judge taste and polish, not pixel-perfection against a reference.
+**Design freedom:** make all the changes you want, this assignments purpose is creativity.
 
 ### 2. Log In
 
@@ -72,40 +70,6 @@ Reached from the landing page ("Get Started"). **No multi-step flow** — one cl
 
 ---
 
-## Code Style Expectations
 
-This is how we write production React at Lancemates — follow it:
-
-- **TypeScript strict** (`tsconfig.json` already has it on). No `any`.
-- Use `interface` for object shapes.
-- Function components + hooks only.
-- All styling via `StyleSheet.create()` — keep colors simple and consistent (a small set of brand colors reused across screens is a good idea).
-- Work in small, sensible commits (`feat:`, `fix:`, `refactor:`).
-
----
-
-## Acceptance Criteria & Scoring
-
-| Area | Weight | Look for |
-| --- | --- | --- |
-| Completeness | 35% | All three screens work on `npm run web`; landing links to login + signup; both forms submit to a success state |
-| Design & polish | 25% | Responsive at mobile + desktop, clean spacing/typography, consistent colors |
-| Logic | 25% | Form validation works, errors show inline, nothing crashes |
-| React + TS quality | 10% | Decomposition into components, typed props/state, no `any` |
-| Cleanliness | 5% | Organized files/folders, readable code, sensible commits |
-
-**Bonus (optional):** a small unit test (e.g., with Jest) for the validation logic or a component render.
-
----
-
-## What We'll Ask in the Follow-Up
-
-Be ready to talk through your code — we care about *why* you made the choices, not just that it works:
-
-1. How would you connect these forms to a real backend when one exists?
-2. How would you keep the user signed in across a page refresh? (Think token/session storage.)
-3. How would you handle slow networks or server errors in the submission flow?
-4. How would you add navigation (back stack, deep links) as the app grows?
-5. What would you improve, given another week?
 
 Good luck! We're excited to see what you build.
