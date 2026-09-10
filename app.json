@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "take-home-landing-signup",
-    "slug": "take-home-landing-signup",
+    "name": "Lancemates Take-Home",
+    "slug": "lancemates-take-home",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
     },
