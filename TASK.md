@@ -46,7 +46,7 @@ The public-facing page for a local gig marketplace called **Lancemates**.
 - **Final call-to-action** — a highlighted box with "Ready to get started?" + a signup button.
 - **Footer** — brand, copyright, and a few dummy links.
 
-**Design freedom:** make all the changes you want, this assignments purpose is creativity.
+**Design freedom:** make all the changes you want, this assignments purpose is creativity. Add anything else you want to add as well.
 
 ### 2. Log In
 
