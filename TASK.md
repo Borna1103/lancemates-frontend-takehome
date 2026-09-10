@@ -2,7 +2,7 @@
 
 **Landing Page + Login + Sign-Up**
 
-Thanks for applying! This assignment mirrors the kind of work you'll do on the **Lancemates** product — a local gig marketplace where people post tasks, find help, and offer services in their community. We've scaffolded a skeleton (three screens + a fake auth API); you own the design and polish. Roughly **6–8 hours** of work. Do your best, we're looking for clean, thoughtful code over completeness.
+Thanks for applying! This assignment mirrors the kind of work you'll do on the **Lancemates** product — a local gig marketplace where people post tasks, find help, and offer services in their community. We've scaffolded a simple skeleton (three screens, no backend) so you focus on the design and polish. Roughly **4–6 hours** of work. Do your best, we're looking for clean, thoughtful code over completeness.
 
 ---
 
@@ -16,15 +16,14 @@ Thanks for applying! This assignment mirrors the kind of work you'll do on the *
 
 ### Provided skeleton
 
-We've started the project so you focus on the fun part. These files exist; build **on top of them** (own the design, keep the plumbing):
+We've started the project so you can jump straight in. These files exist; build **on top of them** (own the design, keep the plumbing):
 
-- `src/constants/colors.ts` — light/dark palette
-- `src/contexts/ThemeContext.tsx` + `src/hooks/useColors.ts` — theme-aware colors (`const colors = useColors();`)
-- `src/api/authApi.ts` — **fake** `login()` / `signUp()` endpoints (in-memory DB, simulated delay, throws on bad credentials / duplicate email)
 - `src/screens/LandingScreen.tsx` — landing page skeleton with placeholder sections
-- `src/screens/LoginScreen.tsx` — log in form, already wired to `login()`
-- `src/screens/SignUpScreen.tsx` — sign-up form, already wired to `signUp()`
-- `App.tsx` — minimal screen switcher (landing → login → sign-up) + theme provider
+- `src/screens/LoginScreen.tsx` — log in form (email + password, validation wired)
+- `src/screens/SignUpScreen.tsx` — sign-up form (name, email, password, description)
+- `App.tsx` — simple screen switcher (landing → login → sign-up → welcome)
+
+**No backend and no API layer.** On success, the forms call `App.tsx` which just shows a "welcome" screen. If you want, simulate a fake delay or success yourself — otherwise keep it simple.
 
 ## How to submit
 
@@ -57,9 +56,8 @@ Reached from the landing page ("Log In" button). A simple single screen:
 
 - Email + password fields with show/hide password
 - Inline validation: valid email format, password required
-- Calls the fake `login()` endpoint with a **loading state**; surface auth errors (wrong credentials) inline
 - Links to the sign-up form
-- On success, the app switches to a simple "You're signed in" placeholder (logging out returns to the landing page)
+- On submit, the app shows the "signed in" welcome screen (logging out returns to the landing page)
 
 ### 3. Sign Up (single form)
 
@@ -70,8 +68,7 @@ Reached from the landing page ("Get Started"). **No multi-step flow** — one cl
 - **Password** (required, meet strength rules: min 8 chars, one uppercase, one lowercase, one number, one special character)
 - **About you / description** (optional, multiline)
 - Show/hide password toggle, inline error messages per field
-- Calls the fake `signUp()` endpoint with a **loading state**; handle the "email already taken" error inline
-- On success, the app switches to the signed-in placeholder
+- On submit, the app shows the signed-in welcome screen
 
 ---
 
@@ -80,19 +77,9 @@ Reached from the landing page ("Get Started"). **No multi-step flow** — one cl
 This is how we write production React at Lancemates — follow it:
 
 - **TypeScript strict** (`tsconfig.json` already has it on). No `any`.
-- Use `interface` for object shapes (we use an `I` prefix, e.g., `IUser`).
+- Use `interface` for object shapes.
 - Function components + hooks only.
-- All styling via `StyleSheet.create()` — no random inline colors.
-- Use `useColors()`-style **theme-aware colors** (keep the palette in a `constants/colors.ts`). Example:
-
-```ts
-const Colors = {
-  light: { background: "#FAF9F6", text: "#151718", tint: "#002c37" },
-  dark: { background: "#0a0a0a", text: "#F0F0F0", tint: "#14b8a6" },
-};
-```
-
-- The app must support **light and dark mode** with a toggle (persist the choice with `AsyncStorage` or `localStorage` on web).
+- All styling via `StyleSheet.create()` — keep colors simple and consistent (a small set of brand colors reused across screens is a good idea).
 - Work in small, sensible commits (`feat:`, `fix:`, `refactor:`).
 
 ---
@@ -101,9 +88,9 @@ const Colors = {
 
 | Area | Weight | Look for |
 | --- | --- | --- |
-| Completeness | 35% | All three screens work on `npm run web`; landing links to login + signup; both auth flows complete to the signed-in state |
-| Design & polish | 25% | Responsive at mobile + desktop, clean spacing/typography, light/dark mode |
-| Logic | 25% | Form validation, loading + error states, correct async handling of the fake API |
+| Completeness | 35% | All three screens work on `npm run web`; landing links to login + signup; both forms submit to the welcome screen |
+| Design & polish | 25% | Responsive at mobile + desktop, clean spacing/typography, consistent colors |
+| Logic | 25% | Form validation works, errors show inline, nothing crashes |
 | React + TS quality | 10% | Decomposition into components, typed props/state, no `any` |
 | Cleanliness | 5% | Organized files/folders, readable code, sensible commits |
 
@@ -115,10 +102,10 @@ const Colors = {
 
 Be ready to talk through your code — we care about *why* you made the choices, not just that it works:
 
-1. How does the fake `authApi` differ from a real backend — what would you change when a real API lands?
+1. How would you connect these forms to a real backend when one exists?
 2. How would you keep the user signed in across a page refresh? (Think token/session storage.)
-3. How would you handle retries, timeouts, or network failures on these calls today?
-4. How would you scale the theme system to a whole app?
+3. How would you handle slow networks or server errors in the submission flow?
+4. How would you add navigation (back stack, deep links) as the app grows?
 5. What would you improve, given another week?
 
 Good luck! We're excited to see what you build.

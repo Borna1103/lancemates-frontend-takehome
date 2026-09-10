@@ -5,18 +5,15 @@ This is the candidate workspace: a blank Expo (React Native + TypeScript) app.
 The assignment spec is in `TASK.md`. Build on the provided skeleton:
 
 ```
-├── App.tsx                    # Root: ThemeProvider + minimal screen switcher
+├── App.tsx                    # Root: simple screen switcher (landing/login/signup/home)
 └── src/
-    ├── api/authApi.ts         # Fake login() / signUp() endpoints (in-memory DB)
-    ├── constants/colors.ts    # Light/dark palette
-    ├── contexts/ThemeContext.tsx
-    ├── hooks/useColors.ts     # Theme-aware colors
-    ├── screens/
-    │   ├── LandingScreen.tsx  # Skeleton — build out hero/features/etc.
-    │   ├── LoginScreen.tsx    # Wired to login()
-    │   └── SignUpScreen.tsx   # Wired to signUp()
-    └── types.ts               # IUser, ILoginInput, ISignUpInput, IAuthResponse
+    └── screens/
+        ├── LandingScreen.tsx  # Skeleton — build out hero/features/etc.
+        ├── LoginScreen.tsx    # Email + password form (validation wired)
+        └── SignUpScreen.tsx   # Name, email, password, description form
 ```
+
+No backend, no API layer, no theme system — keep it simple.
 
 ## Useful commands
 
@@ -29,9 +26,9 @@ The assignment spec is in `TASK.md`. Build on the provided skeleton:
 ## Code style
 
 - TypeScript strict; no `any`
-- `interface` with `I` prefix for object shapes (e.g., `IUser`)
+- `interface` for object shapes
 - Function components + hooks only
-- `StyleSheet.create()` for styles; theme-aware colors from a `constants` palette
+- `StyleSheet.create()` for styles; simple, consistent colors
 - Conventional commits (`feat:`, `fix:`, `refactor:`)
 
 ## Expo note
