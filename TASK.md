@@ -1,8 +1,8 @@
 # Lancemates — Frontend Take-Home Assignment
 
-**Landing Page + Signup Flow**
+**Landing Page + Login + Sign-Up**
 
-Thanks for applying! This assignment mirrors the kind of work you'll do on the **Lancemates** product — a local gig marketplace where people post tasks, find help, and offer services in their community. We're keeping it small: two screens, no backend, roughly **6–8 hours** of work. Do your best, we're looking for clean, thoughtful code over completeness.
+Thanks for applying! This assignment mirrors the kind of work you'll do on the **Lancemates** product — a local gig marketplace where people post tasks, find help, and offer services in their community. We've scaffolded a skeleton (three screens + a fake auth API); you own the design and polish. Roughly **6–8 hours** of work. Do your best, we're looking for clean, thoughtful code over completeness.
 
 ---
 
@@ -10,9 +10,21 @@ Thanks for applying! This assignment mirrors the kind of work you'll do on the *
 
 1. Install dependencies: `npm install`
 2. Run it: `npm run web` (that's all you need — no Android/iOS SDK setup required)
-3. Verify the template runs: you should see the default Expo screen
+3. Verify the app boots: you should see the landing page skeleton with Log In / Get Started buttons
 
 **Environment:** Node 18+ and npm are the only tools you need.
+
+### Provided skeleton
+
+We've started the project so you focus on the fun part. These files exist; build **on top of them** (own the design, keep the plumbing):
+
+- `src/constants/colors.ts` — light/dark palette
+- `src/contexts/ThemeContext.tsx` + `src/hooks/useColors.ts` — theme-aware colors (`const colors = useColors();`)
+- `src/api/authApi.ts` — **fake** `login()` / `signUp()` endpoints (in-memory DB, simulated delay, throws on bad credentials / duplicate email)
+- `src/screens/LandingScreen.tsx` — landing page skeleton with placeholder sections
+- `src/screens/LoginScreen.tsx` — log in form, already wired to `login()`
+- `src/screens/SignUpScreen.tsx` — sign-up form, already wired to `signUp()`
+- `App.tsx` — minimal screen switcher (landing → login → sign-up) + theme provider
 
 ## How to submit
 
@@ -24,7 +36,7 @@ Thanks for applying! This assignment mirrors the kind of work you'll do on the *
 
 ## What to Build
 
-Two screens in this single Expo (React Native, TypeScript) app:
+Three screens in this single Expo (React Native, TypeScript) app:
 
 ### 1. Landing Page (marketing)
 
@@ -39,32 +51,27 @@ The public-facing page for a local gig marketplace called **Lancemates**.
 
 **Design freedom:** you own the visual design. We judge taste and polish, not pixel-perfection against a reference.
 
-### 2. Signup Flow (multi-step form, 3 steps)
+### 2. Log In
 
-A `Sign up` experience the user reaches from the landing page. It must be a **multi-step flow with a progress indicator**. No real backend — simulate the final submit with a fake delay.
+Reached from the landing page ("Log In" button). A simple single screen:
 
-**Step 1 — Account:**
-- Email, password, and confirm password fields
-- Email must be a valid format
-- Password must meet strength rules (min 8 chars, one uppercase, one lowercase, one number, one special character)
-- Show/hide password toggles
-- Inline error messages under each field; block advancing until valid
+- Email + password fields with show/hide password
+- Inline validation: valid email format, password required
+- Calls the fake `login()` endpoint with a **loading state**; surface auth errors (wrong credentials) inline
+- Links to the sign-up form
+- On success, the app switches to a simple "You're signed in" placeholder (logging out returns to the landing page)
 
-**Step 2 — Profile:**
-- First and last name
-- "I'm looking to" role selection as selectable cards: **Post tasks** (seeking help), **Offer services**, or **Both**
-- Skills/categories as tappable chips (make up a reasonable list, allow toggling multiple on/off)
+### 3. Sign Up (single form)
 
-**Step 3 — Submit:**
-- Show a summary of what was entered (email, name, role, skills)
-- "Create Account" button with a **loading state** (simulate ~1.5s round trip)
-- On success, show a confirmation screen with a "Get Started" button (doesn't need to navigate anywhere real)
+Reached from the landing page ("Get Started"). **No multi-step flow** — one clean form:
 
-**Flow requirements:**
-- Progress indicator (step 1 of 3, etc.), Back + Continue buttons
-- Form state must be **preserved** when going back and forward between steps
-- Can't leave a step with invalid input on that step
-- Handle the "email already taken" case gracefully (a mock error from your fake API)
+- **Name** (required)
+- **Email** (required, must be a valid format)
+- **Password** (required, meet strength rules: min 8 chars, one uppercase, one lowercase, one number, one special character)
+- **About you / description** (optional, multiline)
+- Show/hide password toggle, inline error messages per field
+- Calls the fake `signUp()` endpoint with a **loading state**; handle the "email already taken" error inline
+- On success, the app switches to the signed-in placeholder
 
 ---
 
@@ -94,9 +101,9 @@ const Colors = {
 
 | Area | Weight | Look for |
 | --- | --- | --- |
-| Completeness | 35% | Both screens work on `npm run web`; landing links to signup; flow completes to success |
+| Completeness | 35% | All three screens work on `npm run web`; landing links to login + signup; both auth flows complete to the signed-in state |
 | Design & polish | 25% | Responsive at mobile + desktop, clean spacing/typography, light/dark mode |
-| Logic | 25% | Validation, multi-step state handling, loading + error states |
+| Logic | 25% | Form validation, loading + error states, correct async handling of the fake API |
 | React + TS quality | 10% | Decomposition into components, typed props/state, no `any` |
 | Cleanliness | 5% | Organized files/folders, readable code, sensible commits |
 
@@ -108,9 +115,9 @@ const Colors = {
 
 Be ready to talk through your code — we care about *why* you made the choices, not just that it works:
 
-1. Why a multi-step form vs. a single long form? What are the tradeoffs?
-2. If a user refreshed the browser mid-way through signup, how would you preserve their draft?
-3. How would this code change if the signup hit a real backend — error states, retries, token handling?
+1. How does the fake `authApi` differ from a real backend — what would you change when a real API lands?
+2. How would you keep the user signed in across a page refresh? (Think token/session storage.)
+3. How would you handle retries, timeouts, or network failures on these calls today?
 4. How would you scale the theme system to a whole app?
 5. What would you improve, given another week?
 

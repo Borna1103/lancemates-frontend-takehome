@@ -2,7 +2,21 @@
 
 This is the candidate workspace: a blank Expo (React Native + TypeScript) app.
 
-The assignment spec is in `TASK.md` — read it and build the landing page + signup flow described there.
+The assignment spec is in `TASK.md`. Build on the provided skeleton:
+
+```
+├── App.tsx                    # Root: ThemeProvider + minimal screen switcher
+└── src/
+    ├── api/authApi.ts         # Fake login() / signUp() endpoints (in-memory DB)
+    ├── constants/colors.ts    # Light/dark palette
+    ├── contexts/ThemeContext.tsx
+    ├── hooks/useColors.ts     # Theme-aware colors
+    ├── screens/
+    │   ├── LandingScreen.tsx  # Skeleton — build out hero/features/etc.
+    │   ├── LoginScreen.tsx    # Wired to login()
+    │   └── SignUpScreen.tsx   # Wired to signUp()
+    └── types.ts               # IUser, ILoginInput, ISignUpInput, IAuthResponse
+```
 
 ## Useful commands
 
