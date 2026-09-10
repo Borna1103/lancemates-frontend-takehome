@@ -16,14 +16,14 @@ Thanks for applying! This assignment mirrors the kind of work you'll do on the *
 
 ### Provided skeleton
 
-We've started the project so you can jump straight in. These files exist; build **on top of them** (own the design, keep the plumbing):
+We've started the project so you have a place to begin. These are **empty stubs** — the design, content, forms, and validation are all yours:
 
-- `src/screens/LandingScreen.tsx` — landing page skeleton with placeholder sections
-- `src/screens/LoginScreen.tsx` — log in form (email + password, validation wired)
-- `src/screens/SignUpScreen.tsx` — sign-up form (name, email, password, description)
-- `App.tsx` — simple screen switcher (landing → login → sign-up → welcome)
+- `src/screens/LandingScreen.tsx` — empty landing page shell
+- `src/screens/LoginScreen.tsx` — empty login screen shell
+- `src/screens/SignUpScreen.tsx` — empty sign-up screen shell
+- `App.tsx` — tiny screen switcher that connects the three screens
 
-**No backend and no API layer.** On success, the forms call `App.tsx` which just shows a "welcome" screen. If you want, simulate a fake delay or success yourself — otherwise keep it simple.
+**No backend, no API layer, no pre-built design.** You're starting from a nearly blank slate — that's the point.
 
 ## How to submit
 
@@ -57,7 +57,7 @@ Reached from the landing page ("Log In" button). A simple single screen:
 - Email + password fields with show/hide password
 - Inline validation: valid email format, password required
 - Links to the sign-up form
-- On submit, the app shows the "signed in" welcome screen (logging out returns to the landing page)
+- On submit, show a success state however you like (e.g., a "You're signed in" screen)
 
 ### 3. Sign Up (single form)
 
@@ -68,7 +68,7 @@ Reached from the landing page ("Get Started"). **No multi-step flow** — one cl
 - **Password** (required, meet strength rules: min 8 chars, one uppercase, one lowercase, one number, one special character)
 - **About you / description** (optional, multiline)
 - Show/hide password toggle, inline error messages per field
-- On submit, the app shows the signed-in welcome screen
+- On submit, show a success state however you like (e.g., a "You're signed in" screen)
 
 ---
 
@@ -88,7 +88,7 @@ This is how we write production React at Lancemates — follow it:
 
 | Area | Weight | Look for |
 | --- | --- | --- |
-| Completeness | 35% | All three screens work on `npm run web`; landing links to login + signup; both forms submit to the welcome screen |
+| Completeness | 35% | All three screens work on `npm run web`; landing links to login + signup; both forms submit to a success state |
 | Design & polish | 25% | Responsive at mobile + desktop, clean spacing/typography, consistent colors |
 | Logic | 25% | Form validation works, errors show inline, nothing crashes |
 | React + TS quality | 10% | Decomposition into components, typed props/state, no `any` |

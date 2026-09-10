@@ -5,15 +5,15 @@ This is the candidate workspace: a blank Expo (React Native + TypeScript) app.
 The assignment spec is in `TASK.md`. Build on the provided skeleton:
 
 ```
-├── App.tsx                    # Root: simple screen switcher (landing/login/signup/home)
+├── App.tsx                    # Root: minimal screen switcher (landing/login/signup)
 └── src/
     └── screens/
-        ├── LandingScreen.tsx  # Skeleton — build out hero/features/etc.
-        ├── LoginScreen.tsx    # Email + password form (validation wired)
-        └── SignUpScreen.tsx   # Name, email, password, description form
+        ├── LandingScreen.tsx  # Empty stub — build the landing page
+        ├── LoginScreen.tsx    # Empty stub — build the login form
+        └── SignUpScreen.tsx   # Empty stub — build the sign-up form
 ```
 
-No backend, no API layer, no theme system — keep it simple.
+No backend, no API layer, no pre-built design — start from the stubs.
 
 ## Useful commands
 
